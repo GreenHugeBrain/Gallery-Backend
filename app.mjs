@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+const port = 3000;
 
 // Update CORS configuration
 app.use(cors({
@@ -36,11 +37,14 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(Router);
 
-mongoose.connect(process.env.MONGODB_URI, 'mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.hvgj3.mongodb.net/galleryDB?retryWrites=true&w=majority')
-    .then(() => console.log("Connected to MongoDB"))
-    .catch(err => console.error("MongoDB connection error:", err));
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("Connected to MongoDB"))
+.catch(err => console.error("MongoDB connection error:", err));
 
-const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
