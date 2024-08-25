@@ -11,7 +11,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
 
 // Update CORS configuration
 app.use(cors({
@@ -41,6 +40,7 @@ mongoose.connect('mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.h
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error("MongoDB connection error:", err));
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
