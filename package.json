@@ -5,6 +5,7 @@
   "main": "app.mjs",
   "scripts": {
     "start": "node app.mjs",
+    "build": "npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
