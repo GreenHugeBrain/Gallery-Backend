@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(Router);
 
-mongoose.connect(process.env.MONGODB_URI, {
+  mongoose.connect('mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.hvgj3.mongodb.net/galleryDB?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
