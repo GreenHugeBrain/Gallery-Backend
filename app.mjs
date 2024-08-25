@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use(Router);
 
-mongoose.connect(process.env.MONGODB_URI, 'mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.hvgj3.mongodb.net/?retryWrites=true&w=majority&appName=galleryDB')
+mongoose.connect(process.env.MONGODB_URI, 'mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.hvgj3.mongodb.net/galleryDB?retryWrites=true&w=majority')
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.error("MongoDB connection error:", err));
 
