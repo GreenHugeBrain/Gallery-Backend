@@ -6,6 +6,8 @@ import session from 'express-session';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
+import MongoStore from 'connect-mongo';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,11 +29,14 @@ app.use(session({
     secret: 'gallery project',
     saveUninitialized: false,
     resave: false,
+    store: MongoStore.create({
+        mongoUrl: 'mongodb+srv://khvtisozedelashvili:BEi0r03gEKlbezH7@gallerydb.hvgj3.mongodb.net/galleryDB?retryWrites=true&w=majority',  // Use the MongoDB URI
+        ttl: 14 * 24 * 60 * 60 // 14 days session expiration
+    }),
     cookie: {
         maxAge: 60000 * 60
     }
 }));
-
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(express.static(path.join(__dirname, 'client')));
 
